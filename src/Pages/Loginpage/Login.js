@@ -10,8 +10,6 @@ class Login extends React.Component {
             message: {}
         }
 
-       
-        //this.onSubmit = this.onSubmit.bind(this);
 
     };
     render() {
