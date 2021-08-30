@@ -9,9 +9,50 @@ class Login extends React.Component {
             fields: {},
             message: {}
         }
-
-
+        this.onSubmit = this.onSubmit.bind(this);
+       
+        
     };
+    onSubmit(e) {
+		console.log('venkat');
+        
+        e.preventDefault();
+        if (this.validateForm()) {
+        }
+    }
+    validateForm() {
+        let fields = this.state.fields;
+        let message = {};
+        let formIsValid = true;
+        
+        if (!fields["Email"]) {
+            formIsValid = false;
+            message["Email"] = "Please enter email.";
+            
+        }
+        else {
+            if (fields["Email"].trim() == '') {
+                formIsValid = false;
+                message["Email"] = "Please enter email.";
+            }
+        }
+
+        if (!fields["Password"]) {
+            formIsValid = false;
+            message["Password"] = "Please enter password.";
+            
+        }
+        else {
+            if (fields["Password"].trim() == '') {
+                formIsValid = false;
+                message["Password"] = "Please enter password.";
+            }
+        }
+        this.setState({
+            message: message
+        });
+        return formIsValid;
+    }
     render() {
         const { message, fields } = this.state;
         return (
@@ -24,13 +65,13 @@ class Login extends React.Component {
   <div class="pY-1 h-90">
   <div class="">
   <div class="pY-20 h-100">
-    <h4 class="fw-300 c-grey-900 mB-40 d-flex justify-content-center"><img src={Logo}/></h4>
+    <h4 class="fw-300 c-grey-900 mB-40 d-flex justify-content-center"><img style={{height: '50px'}} src={Logo}/></h4>
 	
-                        <form name="Login" >                          
+                        <form name="Login"  onSubmit={this.onSubmit}>                          
                             <div class="form-group">
-                                <label htmlFor="Email" className="text-normal text-dark font-weight-normal">Email address or username</label>
+                                <label htmlFor="Email" className="text-normal text-dark font-weight-normal formfield">Email address or username</label>
                                 <input type="text" maxLength="100" className="form-control " name="Email" id="Email" value={fields.Email} placeholder="Your email address" autoFocus onChange={this.onChange} />
-                                
+                                <small className="text-danger">{message.Email}</small> 
                             </div>
                             <div class="form-group">
                                 <label htmlFor="Password" className="text-normal text-dark font-weight-normal">Password</label>
@@ -54,13 +95,14 @@ class Login extends React.Component {
                                 </div>
                                 <div class="peers ai-c jc-c fxw-nw mT-20">
                                     <div class="peer text-center">
-                                        <Link to="/home" className="no-underline"> <button type="submit" className="btn btn-primary">Login</button></Link>
+                                         <button type="submit" className="btn btn-primary ">Login</button>
                                     </div>
                                 </div>
                                 <div class="peers ai-c jc-c fxw-nw mT-20">
                                     <div className="form-group">
                                         <p className="text-muted text-center">Not a member?
-                                    <Link to="/signup">Create new Account </Link>
+                                    <Link to="/signup">Create new Account </Link> <br></br>
+                                    <Link to="/optscreen">Otp </Link>
                                         </p>
                                     </div>
                                 </div>

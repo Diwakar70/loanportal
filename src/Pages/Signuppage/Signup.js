@@ -32,6 +32,7 @@ class Signup extends Component {
 
     onSubmit(e) {
 		console.log('venkat');
+        
         e.preventDefault();
         if (this.validateForm()) {
             const { fields, message } = this.state;
@@ -171,7 +172,8 @@ class Signup extends Component {
   <div class="pY-1 h-90">
   <div class="">
   <div class="pY-1 h-100">
-        <h4 class="fw-300 c-grey-900 mB-40 d-flex justify-content-center"><img src={Logo}/></h4>
+        
+        <h4 class="fw-300 c-grey-900 mB-40 d-flex justify-content-center">Register</h4>
         <form name="ForgotPassword" onSubmit={this.onSubmit}>
         <span className="text-danger">{message.error}</span>
                                 <span className="text-success">{message.success}</span>
