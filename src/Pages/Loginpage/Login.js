@@ -87,7 +87,6 @@ class Login extends React.Component {
                                                 <span class="peer peer-greed">Keep me signed in</span>
                                             </label>
                                         </div>
-
                                     </div>
                                     <div class="peer">
                                         <Link to="/forgotpassword" className="forgot-btn pull-right"> Forgot password?</Link>
